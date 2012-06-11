@@ -7,7 +7,21 @@ Authors
  * José Antonio Martín Baena <jose.antonio.martin.baena@gmail.com>
  * Ernesto Pimentel Sánchez <ernesto@lcc.uma.es>
 
-Introduction
+Dinapter is the prototype resulting from a couple of research papers:
+
+ * J.A. Martín, E. Pimentel. Automatic Generation of Adaptation Contracts,
+   FOCLASA'08, ENTCS, 2008 - http://goo.gl/21iJZ
+ * J.A. martín, E. Pimentel. Dinapter: Automatic Adapter Specification for
+   Software Composition, PROLE'08, ENTCS, 2008 - http://goo.gl/VrQvG
+
+And later integrated and improved within the ITACA toolbox
+(http://itaca.gisum.uma.es/):
+
+ * J. Camara, J.A. Martín, G. Salaun, J. Cubo, M. Ouederni, C. Canal, E.
+   Pimentel. ITACA: An integrated toolbox for the automatic composition and
+   adaptation of Web services, ICSE'09, 2009 - http://goo.gl/oFGe8
+
+Abstract
 ------------
 
 Nowadays, application design using off-the-shelf software components has
