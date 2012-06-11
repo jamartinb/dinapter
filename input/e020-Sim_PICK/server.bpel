@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="MedServer-WN-no_loop"
+    targetNamespace="http://lcc.uma.es/dinapter/examples"
+    abstractProcessProfile="http://docs.oasis-open.org/wsbpel/2.0/process/abstract" 
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+
+	<!-- links>
+		<link name="doc-loop"/>
+		<link name="spec-loop"/>
+	</link -->
+	<receive operation="login">
+		<!-- target linkName="doc-loop"/>
+		<target linkName="spec-loop"/ -->
+		<fromParts>
+			<fromPart part="username"/>
+			<frompart part="pwd"/> 
+		</fromParts>
+	</receive>
+	<pick>
+		<onMessage operation="physician" variable="date">
+			<invoke operation="physicianReply" inputVariable="ticket"/>
+		</onMessage>
+		<onMessage operation="specialist" variable="date">
+			<sequence>
+				<invoke operation="availability" inputVariable="date"/>
+				<receive operation="availability" variable="ticket"/>
+				<invoke operation="specialistReply" inputVariable="ticket"/>
+			</sequence>
+		</onMessage>
+	</pick>
+</process>

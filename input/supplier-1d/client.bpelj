@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-1d-purchase_loop">
+<!-- It should be here some other declarations and definitions -->
+
+<!-- <sequence> Implicit -->
+	<links>
+		<link name="loop"/>
+	</links>
+
+	<invoke operation="getItem">
+		<input part="item"/>
+		<input part="type"/>
+		<target linkName="loop"/>
+	</invoke>
+	<receive operation="getItem">
+                <input part="price"/>
+	</receive>
+
+	<if>
+		<invoke operation="buy">
+			<input part="item"/>
+			<source linkName="loop"/>
+		</invoke>
+		<invoke operation="exit"/>
+	</if>
+
+	<exit/>
+
+<!-- </sequence> -->
+
+</process>

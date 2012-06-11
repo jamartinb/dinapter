@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="supplier_loop-SAC09b">
+<!-- It should be here some other declarations and definitions -->
+
+<sequence>
+	<links>
+		<link name="loop"/>
+	</links>
+	<receive operation="setCategory">
+		<input part="type"/>
+	</receive>
+	<pick>
+		<target linkName="loop"/> 
+		<sequence>
+			<receive operation="itemRequest">
+				<input part="item"/>
+			</receive>
+			<invoke operation="itemRequest">
+				<output part="price"/>
+			</invoke>
+			<receive operation="purchase">
+				<input part="item"/>
+			</receive>
+			<invoke operation="invoice">
+				<input part="number"/>
+				<source linkName="loop"/>
+			</invoke>
+		</sequence>
+		<sequence>
+			<receive operation="abort"/>
+			<exit/>
+		</sequence>
+	</pick>
+	
+</sequence>
+
+</process>

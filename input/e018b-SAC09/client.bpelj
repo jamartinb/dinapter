@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-SAC09">
+<!-- It should be here some other declarations and definitions -->
+
+<!-- <sequence> Implicit -->
+
+
+	<invoke operation="getItem">
+		<input part="item"/>
+		<input part="type"/>
+	</invoke>
+	<receive operation="getItem">
+                <input part="price"/>
+	</receive>
+
+	<if>
+
+		<sequence>
+			<invoke operation="buy">
+				<input part="item"/>
+			</invoke>
+			<receive operation="ack"/>
+		</sequence>
+		<sequence>
+			<invoke operation="abort"/>
+		</sequence>
+
+	</if>
+
+	<exit/>
+
+<!-- </sequence> -->
+
+</process>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-2xPICK">
+<!-- It should be here some other declarations and definitions -->
+	<receive operation="hola"/>
+	<pick>
+		<sequence>
+			<receive operation="quieroViajar"/>
+			<pick>
+				<receive operation="vamosA">
+					<input part="rioja"/>
+				</receive>
+				<receive operation="volamosA">
+					<input part="bruselas"/>
+				</receive>
+			</pick>
+			<exit/>
+		</sequence>
+		<sequence>
+			<receive operation="quieroDivagar"/>
+			<pick>
+				<receive operation="estoy">
+					<input part="curado"/>
+				</receive>
+				<receive operation="apellido">
+					<input part="serrano"/>
+				</receive>
+			</pick>
+			<exit/>
+		</sequence>
+	</pick>
+</process>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-single_request">
+	<!-- It should be here some other declarations and definitions -->
+	<invoke operation="request">
+		<input part="username"/>
+		<input part="password"/>
+		<input part="filename"/>
+	</invoke>
+	<receive operation="response">
+		<input part="data"/>
+	</receive>
+	<exit/>
+</process>

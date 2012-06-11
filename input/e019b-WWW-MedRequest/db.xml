@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<interface height="128" width="237" ports="left">
+	<signatures>
+		<signature name="availability">
+			<inputs>
+				<dataItem name="tdate"/>
+			</inputs>
+			<outputs>
+				<dataItem name="tid"/>
+			</outputs>
+		</signature>
+	</signatures>
+	<protocol>
+		<labels>
+			<label id="availability_EM" name="availability" type="OUT">
+				<dataItem name="tkt"/>
+			</label>
+			<label id="availability_REC" name="availability" type="IN">
+				<dataItem name="d"/>
+			</label>
+		</labels>
+		<states>
+			<state id="1" x="106" y="108"/>
+			<state id="0" initial="True" x="160" y="48"/>
+			<state final="True" id="2"/>
+		</states>
+		<transitions>
+			<transition label="availability_REC" source="0" target="1" x="161" y="98"/>
+			<transition label="availability_EM" source="1" target="2" x="99" y="64"/>
+		</transitions>
+	</protocol>
+</interface>

@@ -1,0 +1,1 @@
+@TODO: Why it doesn't take both client branches through the general doctor request? In this way it would avoid the availability problem.

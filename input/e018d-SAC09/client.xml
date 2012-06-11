@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<interface height="319" width="341">
+	<signatures>
+		<signature name="cancel"/>
+		<signature name="buy">
+			<outputs>
+				<dataItem name="string"/>
+			</outputs>
+		</signature>
+		<signature name="confirmation"/>
+		<signature name="getItem">
+			<inputs>
+				<dataItem name="int"/>
+			</inputs>
+			<outputs>
+				<dataItem name="string"/>
+				<dataItem name="string"/>
+			</outputs>
+		</signature>
+	</signatures>
+	<protocol>
+		<labels>
+			<label id="confirmation_REC" name="confirmation" type="IN"/>
+			<label id="cancel_EM" name="cancel" type="OUT"/>
+			<label id="buy_EM" name="buy" type="OUT">
+				<dataItem name="item"/>
+			</label>
+			<label id="getItem_EM" name="getItem" type="OUT">
+				<dataItem name="item"/>
+				<dataItem name="type"/>
+			</label>
+			<label id="getItem_REC" name="getItem" type="IN">
+				<dataItem name="price"/>
+			</label>
+		</labels>
+		<states>
+			<state id="1" x="160" y="100"/>
+			<state id="0" initial="True" x="159" y="51"/>
+			<state id="3" x="95" y="195"/>
+			<state id="2" x="160" y="148"/>
+			<state id="5" x="94" y="256"/>
+			<state id="4" x="223" y="196"/>
+			<state final="True" id="6" x="225" y="253"/>
+		</states>
+		<transitions>
+			<transition label="getItem_EM" source="0" target="1" x="159" y="71"/>
+			<transition label="getItem_REC" source="1" target="2" x="161" y="123"/>
+			<transition label="TAU" source="2" target="4" x="204" y="148"/>
+			<transition label="cancel_EM" source="4" target="6" x="225" y="218"/>
+			<transition label="TAU" source="2" target="3" x="112" y="146"/>
+			<transition label="buy_EM" source="3" target="5" x="93" y="226"/>
+			<transition label="confirmation_REC" source="5" target="6" x="155" y="331"/>
+		</transitions>
+	</protocol>
+</interface>

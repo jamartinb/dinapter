@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="FTPServer-Small_rename">
+<!-- It should be here some other declarations and definitions -->
+
+<sequence>
+	<links>
+		<link name="RtoP"/>
+		<link name="NtoP"/>
+	</links>
+	<receive operation="login">
+		<input part="username"/>
+		<input part="pass"/>
+	</receive>
+	<reply operation="login"/>
+	<pick>
+		<target linkName="RtoP"/> 
+		<target linkName="NtoP"/>
+		<sequence>
+			<receive operation="getFile">
+				<input part="filename"/>
+			</receive>
+	
+			<if>
+				<reply operation="download">
+					<input part="data"/>
+					<source linkName="RtoP"/>
+				</reply>
+				<reply operation="download">
+					<source linkName="NtoP"/>
+				</reply>
+			</if>
+		</sequence>
+		<sequence>
+			<receive operation="quit"/>
+			<exit/>
+		</sequence>
+	</pick>
+	
+</sequence>
+
+</process>

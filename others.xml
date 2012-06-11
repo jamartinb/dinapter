@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse.ant.import?>
+<project name="Other ant tasks" default="JSearchSpecificator" basedir=".">
+    <import file="build.xml"/>
+    <property name="junit.output.dir" value="junit"/>
+    <target name="JSearchSpecificator" depends="build">
+        <java classname="dinapter.specificator.JSearchSpecificator" failonerror="true" fork="yes">
+            <jvmarg line="-XX:NewSize=32m -Xms128m -Xmx512m"/>
+            <arg line="small"/>
+            <classpath refid="Dinapter.classpath"/>
+        </java>
+    </target>
+    <target name="debug-nb">
+        <nbjpdastart addressproperty="jpda.address" name="Dinapter" transport="dt_socket">
+            <classpath refid="Dinapter.classpath"/>
+        </nbjpdastart>
+        <!-- TODO configure the main class for your project here: -->
+        <java classname="dinapter.specificator.JSearchSpecificator" fork="true">
+            <jvmarg line="-XX:NewSize=32m -Xms128m -Xmx512m"/>
+            <arg line="small"/>
+            <classpath refid="Dinapter.classpath"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xnoagent"/>
+            <jvmarg value="-Djava.compiler=none"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=${jpda.address}"/>
+        </java>
+    </target>
+	    <target name="Dinapter JUnit">
+	        <mkdir dir="${junit.output.dir}"/>
+	        <junit fork="yes" printsummary="withOutAndErr">
+	            <formatter type="xml"/>
+	            <jvmarg line="-Xms128m -Xmx512m -XX:NewSize=16m"/>
+	            <classpath refid="Dinapter.classpath"/>
+	        </junit>
+	    </target>
+	    <target name="BPELJBehaviorProvider">
+	        <java classname="dinapter.bpelj.BPELJBehaviorProvider" failonerror="true" fork="yes">
+	            <classpath refid="Dinapter.classpath"/>
+	        </java>
+	    </target>
+	    <target name="BehaviorGraphGUITest">
+	        <java classname="dinapter.behavior.BehaviorGraphGUITest" failonerror="true" fork="yes">
+	            <classpath refid="Dinapter.classpath"/>
+	        </java>
+	    </target>
+	    <target name="SpecificatorGUITest">
+	        <java classname="dinapter.specificator.SpecificatorGUITest" failonerror="true" fork="yes">
+	            <classpath refid="Dinapter.classpath"/>
+	        </java>
+	    </target>
+	    <target name="Dinapter" depends="build">
+	        <java classname="dinapter.Dinapter" failonerror="true" fork="yes">
+	            <jvmarg line="-XX:NewSize=32m -Xms128m -Xmx512m"/>
+	            <arg line="small"/>
+	            <classpath refid="Dinapter.classpath"/>
+	        </java>
+	    </target>
+	    <target name="Dinapter BPELJ">
+	        <java classname="dinapter.Dinapter" failonerror="true" fork="yes">
+	            <arg line="input/client.bpelj&#10;input/server-small.bpelj"/>
+	            <classpath refid="Dinapter.classpath"/>
+	        </java>
+	    </target>
+	    <target name="junitreport">
+	        <junitreport todir="${junit.output.dir}">
+	            <fileset dir="${junit.output.dir}">
+	                <include name="TEST-*.xml"/>
+	            </fileset>
+	            <report format="frames" todir="${junit.output.dir}"/>
+	        </junitreport>
+	    </target>
+	<target depends="build" name="graphs-lib">
+		<jar destfile="dist/graphs-lib.jar"
+			 basedir="bin"
+			 includes="dinapter/graph/**"
+			 excludes="**/*Test.class **/JPower*.class"
+			 manifest="manifest.mf"/>
+	</target>
+	<target depends="build" name="dist">
+		<mkdir dir="dist"/>
+		<delete includeEmptyDirs="true">
+			<fileset dir="dist">
+				<include name="**/*"/>
+				<exclude name="log/*"/>
+			</fileset>
+		</delete>
+		<jar destfile="dist/Dinapter.jar"
+			 basedir="bin"
+			 excludes="**/*Test.class"
+			 manifest="manifest.mf"/>
+		<copy todir="dist/lib">
+			<fileset dir="lib"/>
+		</copy>
+		<copy todir="dist/input">
+			<fileset dir="input"/>
+		</copy>
+		<copy todir="dist/etc">
+			<fileset dir="etc"/>
+			<fileset file="src/rules/rules.clp"/>
+			<fileset file="src/dinapter/DinapterDefaultProperties.xml"/>
+			<fileset file="src/log4j.xml"/>
+		</copy>
+		<copy file="other/dinapter" todir="dist"/>
+		<copy todir="dist">
+			<fileset dir="other" >
+				<include name="dinapter"/>
+			</fileset>
+			<fileset file="dinapter.py"/>
+		</copy>
+		<chmod perm="a+x">
+			<fileset file="dist/dinapter"/>
+		</chmod>
+	</target>
+	<target name="paper">
+        	<ant dir="doc/paper"/>
+        	<ant dir="doc/articles/PROLE08"/>
+        	<ant dir="doc/articles/FOCLASA08"/>
+		<!--
+		<copy todir=".">
+			<fileset dir="doc/paper" includes="*.pdf"/>
+			<fileset dir="doc/articles/PROLE08" includes="*.pdf"/>
+			<fileset dir="doc/articles/FOCLASA08" includes="*.pdf"/>
+		</copy>
+		-->
+    	</target>
+	<target depends="build,dist,javadoc,junit,paper" name="all"/>
+    <target depends="build" name="package">
+        <mkdir dir="package"/>
+	<mkdir dir="tmp"/>
+	<get src="http://www.jessrules.com/jess/bindist/Jess70p2.zip" dest="tmp/jess.zip"/>
+	<unzip src="tmp/jess.zip" dest="tmp"/>
+        <zip destfile="package/Dinapter.zip">
+            <zipfileset dir="." 
+                     includes="README.TXT 
+                               *.xml 
+                               manifest.mf 
+                               src/ 
+                               lib/ 
+                               input/ 
+                               licenses/ 
+			       etc/
+                               doc/articles/*/*.pdf
+                               doc/paper/paper.pdf
+                               doc/diagrams/**/*.uxf
+                               doc/screenshots/*.png
+			       other/dinapter"
+                     excludes="**/.gitignore
+			       **/jess.jar"
+		     prefix="dinapter"/>
+	    <zipfileset dir="tmp/Jess70p2/lib" includes="jess.jar" fullpath="dinapter/lib/jess.jar"/>
+        </zip>
+	<delete dir="tmp"/>
+    </target>
+    <target name="get-jess">
+	<mkdir dir="tmp"/>
+	<get src="http://www.jessrules.com/jess/bindist/Jess70p2.zip" dest="tmp/jess.zip"/>
+	<unzip src="tmp/jess.zip" dest="tmp"/>
+	<move file="tmp/Jess70p2/lib/jess.jar" todir="lib"/>
+	<delete dir="tmp"/>
+    </target>
+</project>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-which_pick">
+<!-- It should be here some other declarations and definitions -->
+
+	<invoke operation="login">
+		<input part="username"/>
+		<input part="password"/>
+	</invoke>
+	<if>
+		<sequence>
+			<invoke operation="download">
+				<input part="filename"/>
+			</invoke>
+			<receive operation="file">
+				<input part="data"/>
+			</receive>
+			<exit/>
+		</sequence>
+		<sequence>
+			<invoke operation="list"/>
+			<receive operation="result">
+				<input part="filelist"/>
+			</receive>
+			<exit/>
+		</sequence>
+	</if>
+</process>

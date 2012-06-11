@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-if_pick">
+	<!-- It should be here some other declarations and definitions -->
+	<invoke operation="hola"/>
+	<if>
+		<invoke operation="queso">
+			<input part="curado"/>
+		</invoke>
+		<invoke operation="jamón">
+			<input part="serrano"/>
+		</invoke>
+	</if>
+	<pick>
+		<receive operation="comprar">
+			<input part="precio"/>
+		</receive>
+		<receive operation="salir"/>
+	</pick>
+	<exit/>
+</process>

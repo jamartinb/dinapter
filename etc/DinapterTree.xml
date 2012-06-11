@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!--
+  This file is part of Dinapter.
+
+  Dinapter is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  Dinapter is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  (C) Copyright 2007 José Antonio Martín Baena
+  
+  José Antonio Martín Baena <jose.antonio.martin.baena@gmail.com>
+  Ernesto Pimentel Sánchez <ernesto@lcc.uma.es>
+ -->
+<properties>
+	<comment>Default properties/parameters for Dinapter</comment>
+	
+	<!--
+		Relative path for the files which contains the rules for the Jess engine.
+	<entry key="RULES_FILE">rules/rules.clp</entry>
+	 -->
+	
+	<!--
+		Whether all the actions must be included in the final
+		adaptor specification or just the minimal set required. 
+	<entry key="ADAPT_EVERY_ACTION">false</entry>
+	 -->
+
+	<!-- 
+		Penalization to apply per each argument missing in an 
+		adaptation rule. Arguments can be repeated and they are 
+		considered to be satisfied if there is an occurrence 
+		at least. 
+	<entry key="PENALIZATION_PER_INSATISFIED_ARGUMENT">3</entry>
+	 -->
+	
+	<!-- 
+		The penalization of specifications which can lead to 
+		indeterministic adaptors. In this kind of specifications, 
+		when a SEND (or more) is received, the adaptor has more than 
+		one adaptation rule that can be triggered.
+	<entry key="PENALIZATION_AMBIGUOUS_SPECIFICATION">100</entry>
+	 -->
+	
+	<!--
+		 Some optimizations will be applied that might loose
+		 solutions trying to find faster a better one.
+		 It's not recommended to be enabled if you want to find
+		 more solutions in different iterations of the search.
+	<entry key="LOOSY_OPTIMIZATIONS_ENABLED">false</entry>
+	 -->
+	
+	<!-- 
+		The penalization of rules which start with a RECEIVE action
+		in both sides.
+	<entry key="TWO_RECEIVE_PENALIZATION">50</entry>
+	 -->
+	
+	<!-- 
+		The penalization of rules which start with a SEND action
+		in both sides.
+	<entry key="TWO_SEND_PENALIZATION">0</entry>
+	 -->
+	
+	<!--
+	   Penalization to apply when a rule it's empty in one side
+	   and it starts with a RECEIVE in the other. 
+	<entry key="LONELY_RECEIVE_PENALIZATION">0</entry>
+	 -->
+	
+	<!-- The penalization per unbalanced actions in a rule. 
+	<entry key="SIGNUM_COMPENSATION_PENALIZATION">1</entry>
+	-->
+	
+	<!-- It's the initial step cost of every created specification. 
+	<entry key="INITIAL_COST" >1</entry>
+	-->
+	
+	<!-- 
+		The heuristic value added per action missing in the specification.
+		In order to get more solutions and a more optimistic heuristic this
+		value must be set equal to INITIAL_COST. However, in spite of being more unstable,
+		Dinapter yields better results with a value of 2 * INITIAL_COST
+		(particularly when the components are harder to adapt).
+	<entry key="REMAINING_ACTIONS_PENALIZATION">1</entry>
+	 -->
+	
+	<!-- 
+		This tells whether all the actions in the specification count for the
+	 	accumulated cost or just the amount of different
+	 	actions. It will count duplicated actions if this filed is set to
+	 	true. This field is used to calculate the heuristic of
+	 	the startNode and the cost of the copied
+	 	parentNode so it will belong to the accumulated cost of
+	 	the merged specification.
+	<entry key="COST_ALL_OCCURRENCES_COUNT">true</entry>
+	 -->
+	
+	<!-- 
+		This tells to the A* algorithm where to add the new children 
+		before sorting them. The only difference it makes is when both 
+		the f functions and the tie-breaker of two queued specifications 
+		are exactly the same. In this case the outcome is as follows:
+		   * true  - The new children are added in front and, 
+		   			 if they are equally good, the choice will be 
+		   			 explored one step further.
+		   * false - (conservative) The new children are added at the end 
+		   			 and, if they are equally good, other previous 
+		   			 choices will be explored.
+		If the heuristic is optimistic this wouldn't change much but, as 
+		far as it is not, being true makes Dinapter slightly faster but with 
+		less solutions and, in the worst case, it could miss a better 
+		solution.
+	<entry key="QUEUE_ADD_FRONT">true</entry>
+	 -->
+	
+	<!--
+	   If this parameter is enabled the user can see the traces
+	   which lead to any given solution. The problem is that such 
+	   traces can be quite huge so it's not practical in midium-large examples.
+	   @EXPERIMENTAL 
+	 -->
+	 <entry key="ENABLE_SPECIFICATION_GRAPH_DISPLAY">true</entry>
+</properties>

@@ -1,0 +1,1 @@
+In this example the client decides in its SWITCH which way the server must continue. This choice is returned and, depending on the previous SWITCH, the server will choose among the client's PICK branches.

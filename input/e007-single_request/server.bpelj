@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-single_request">
+<!-- It should be here some other declarations and definitions -->
+	<receive operation="login">
+		<input part="username"/>
+		<input part="password"/>
+	</receive>
+	<if>
+		<sequence>
+			<invoke operation="member"/>
+			<receive operation="memberRequest">
+				<input part="filename"/>
+			</receive>
+			<invoke operation="memberResponse">
+				<input part="data"/>
+			</invoke>
+		</sequence>
+		<sequence>
+			<invoke operation="guest"/>
+			<receive operation="guestRequest">
+				<input part="filename"/>
+			</receive>
+			<invoke operation="guestResponse">
+				<input part="data"/>
+			</invoke>
+		</sequence>
+	</if>
+	<exit/>
+</process>

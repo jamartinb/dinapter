@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-2xIF">
+	<!-- It should be here some other declarations and definitions -->
+	<invoke operation="hola"/>
+	<if>
+		<sequence>
+			<invoke operation="comida"/>
+			<if>
+				<invoke operation="queso">
+					<input part="curado"/>
+				</invoke>
+				<invoke operation="jamón">
+					<input part="serrano"/>
+				</invoke>
+			</if>
+			<exit/>
+		</sequence>
+		<sequence>
+			<invoke operation="verduraYBebidas"/>
+			<if>
+				<invoke operation="vino">
+					<input part="rioja"/>
+				</invoke>
+				<invoke operation="coles">
+					<input part="bruselas"/>
+				</invoke>
+			</if>
+			<exit/>
+		</sequence>
+	</if>
+</process>

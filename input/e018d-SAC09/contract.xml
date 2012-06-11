@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<contract>
+	<vectors>
+		<vector id="vector_8">
+			<componentVector eventName="abort" eventType="IN" index="supplier"/>
+		</vector>
+		<vector id="vector_1">
+			<componentVector eventName="setCategory" eventType="IN" index="supplier">
+				<dataItem name="clientgetItemOUTtype"/>
+			</componentVector>
+			<componentVector eventName="getItem" eventType="OUT" index="client">
+				<dataItem name="dummy_1"/>
+				<dataItem name="clientgetItemOUTtype"/>
+			</componentVector>
+		</vector>
+		<vector id="vector_2">
+			<componentVector eventName="itemRequest" eventType="IN" index="supplier">
+				<dataItem name="clientgetItemOUTitem"/>
+			</componentVector>
+		</vector>
+		<vector id="vector_3">
+			<componentVector eventName="itemRequest" eventType="OUT" index="supplier">
+				<dataItem name="supplieritemRequestOUTprice"/>
+			</componentVector>
+			<componentVector eventName="getItem" eventType="IN" index="client">
+				<dataItem name="supplieritemRequestOUTprice"/>
+			</componentVector>
+		</vector>
+		<vector id="vector_4">
+			<componentVector eventName="abort" eventType="IN" index="supplier"/>
+			<componentVector eventName="cancel" eventType="OUT" index="client"/>
+		</vector>
+		<vector id="vector_5">
+			<componentVector eventName="purchase" eventType="IN" index="supplier">
+				<dataItem name="clientbuyOUTitem"/>
+			</componentVector>
+			<componentVector eventName="buy" eventType="OUT" index="client">
+				<dataItem name="clientbuyOUTitem"/>
+			</componentVector>
+		</vector>
+		<vector id="vector_6">
+			<componentVector eventName="invoice" eventType="OUT" index="supplier">
+				<dataItem name="dummy_2"/>
+			</componentVector>
+			<componentVector eventName="confirmation" eventType="IN" index="client"/>
+		</vector>
+		<vector id="vector_7">
+			<componentVector eventName="done" eventType="OUT" index="supplier"/>
+		</vector>
+	</vectors>
+	<LTS>
+		<states>
+			<state final="True" id="s0" initial="True"/>
+		</states>
+		<transitions>
+			<transition label="vector_1" source="s0" target="s0"/>
+			<transition label="vector_2" source="s0" target="s0"/>
+			<transition label="vector_3" source="s0" target="s0"/>
+			<transition label="vector_4" source="s0" target="s0"/>
+			<transition label="vector_5" source="s0" target="s0"/>
+			<transition label="vector_6" source="s0" target="s0"/>
+			<transition label="vector_7" source="s0" target="s0"/>
+			<transition label="vector_8" source="s0" target="s0"/>
+		</transitions>
+	</LTS>
+</contract>

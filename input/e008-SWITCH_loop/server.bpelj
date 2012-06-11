@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="FTPServer-Full">
+	<!-- It should be here some other declarations and definitions -->
+
+	<links>
+		<link name="RtoP"/>
+		<link name="NtoP"/>
+	</links>
+	<receive operation="user">
+		<input part="username"/>
+		<input part="password"/>
+	</receive>
+	<if>
+		<sequence>
+			<invoke operation="connected"/>
+			<pick>
+				<target linkName="RtoP"/> 
+				<target linkName="NtoP"/>
+				<sequence>
+					<receive operation="getFile">
+						<input part="filename"/>
+					</receive>
+			
+					<if>
+						<invoke operation="result">
+							<input part="data"/>
+							<source linkName="RtoP"/>
+						</invoke>
+						<invoke operation="noSuchFile">
+							<source linkName="NtoP"/>
+						</invoke>
+					</if>
+				</sequence>
+				<sequence>
+					<receive operation="quit"/>
+					<exit/>
+				</sequence>
+			</pick>
+		</sequence>
+		<sequence>
+			<invoke operation="rejected"/>
+			<exit/>
+		</sequence>
+	</if>
+</process>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="supplier-1d-purchase_loop">
+	<!-- It should be here some other declarations and definitions -->
+
+	<links>
+		<link name="loop"/>
+	</links>
+
+	<receive operation="setCategory">
+		<target linkName="loop"/>
+		<input part="type"/>
+	</receive>
+	<receive operation="itemRequest">
+		<input part="item"/>
+	</receive>
+
+	<invoke operation="itemRequest">
+                <input part="price"/>
+	</invoke>
+
+	<pick>
+		<sequence>
+			<receive operation="purchase">
+                		<input part="item"/>
+			</receive>
+			<invoke operation="invoice">
+				<input part="number"/>
+				<source linkName="loop"/>
+			</invoke>
+		</sequence>
+		<sequence>
+			<receive operation="quit"/>
+		</sequence>
+	</pick>
+
+	<exit/>
+
+
+</process>

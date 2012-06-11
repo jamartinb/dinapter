@@ -1,0 +1,1 @@
+The client will make a download request with the credentials included in the same operation. This single ''invoke'' should be mapped across a SWITCH because, in the server, the log-in and the request handling is made in different steps.

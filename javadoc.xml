@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse.ant.import?>
+<project default="javadoc">
+	<import file="build.xml"/>
+	<target name="javadoc">
+		<javadoc access="package" author="true" destdir="doc/api" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.5" sourcepath="src" splitindex="true" use="true" version="true" encoding="UTF-8">
+			<classpath refid="Dinapter.classpath"/>
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/"/>
+			<link href="jar:file:/usr/lib/jvm/java-1.5.0-sun/jdk-1_5_0-doc.zip!/docs/api"/>
+		</javadoc>
+	</target>
+</project>

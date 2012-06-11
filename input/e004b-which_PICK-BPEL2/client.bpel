@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-which_pick-BPEL2"
+    targetNamespace="http://lcc.uma.es/dinapter/examples"
+    abstractProcessProfile="http://docs.oasis-open.org/wsbpel/2.0/process/abstract" 
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+
+    <!-- Declarations: partnerLinks, variables, ... -->
+
+	<invoke operation="login">
+	    <toParts>
+		     <toPart part="username"/>
+		     <toPart part="password"/>
+		</toParts>
+	</invoke>
+	<if>
+		<condition opaque="yes"/>
+		<sequence>
+			<invoke operation="download" inputVariable="filename"/>
+			<receive operation="file" variable="data"/>
+		</sequence>
+		<else>
+			<sequence>
+				<invoke operation="list"/>
+				<receive operation="result" variable="filelist"/>
+			</sequence>
+		</else>
+	</if>
+</process>

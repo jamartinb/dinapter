@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-start_if">
+<!-- It should be here some other declarations and definitions -->
+
+	<if>
+		<sequence>
+			<invoke operation="download">
+				<input part="filename"/>
+			</invoke>
+			<receive operation="file">
+				<input part="data"/>
+			</receive>
+			<exit/>
+		</sequence>
+		<sequence>
+			<invoke operation="list"/>
+			<receive operation="result">
+				<input part="filelist"/>
+			</receive>
+			<exit/>
+		</sequence>
+	</if>
+</process>

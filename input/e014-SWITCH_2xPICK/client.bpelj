@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-IF_2xPICK">
+	<!-- It should be here some other declarations and definitions -->
+	<invoke operation="hola"/>
+	<if>
+		<invoke operation="queso">
+			<input part="curado"/>
+		</invoke>
+		<invoke operation="jamón">
+			<input part="serrano"/>
+		</invoke>
+		<invoke operation="vino">
+			<input part="rioja"/>
+		</invoke>
+		<invoke operation="coles">
+			<input part="bruselas"/>
+		</invoke>
+	</if>
+	<exit/>
+</process>

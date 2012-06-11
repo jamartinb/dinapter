@@ -1,0 +1,22 @@
+#!/bin/bash
+####################################################
+#
+#	DINAPTER:
+#	Automatic Generation of Adapter Specifications
+#
+#	dinapter [-u] ( <example-dir> | <behavior-1> <behavior-2> ) [-v]
+#
+
+JVMOPT="-Xms128m -Xmx256m"
+
+if [ $1 == "-u" ]
+then
+	shift
+	java $JVMOPT -Ddinapter.properties=etc/DinapterUnstableProperties.xml -jar Dinapter.jar $@
+elif [ $1 == "-t" ]
+then
+	shift
+	java $JVMOPT -Ddinapter.properties=etc/DinapterTree.xml -jar Dinapter.jar $@
+else
+	java $JVMOPT -jar Dinapter.jar $@
+fi

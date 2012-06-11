@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-if_pick">
+<!-- It should be here some other declarations and definitions -->
+	<receive operation="hola"/>
+	<pick>
+		<sequence>
+			<receive operation="estoy">
+				<input part="curado"/>
+			</receive>
+			<invoke operation="pagar">
+				<input part="precio"/>
+			</invoke>
+		</sequence>
+		<sequence>
+			<receive operation="apellido">
+				<input part="serrano"/>
+			</receive>
+		</sequence>
+	</pick>
+	<exit/>
+</process>

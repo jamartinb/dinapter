@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-1">
+<!-- It should be here some other declarations and definitions -->
+
+<!-- <sequence> Implicit -->
+
+
+	<invoke operation="menu">
+	</invoke>
+	<receive operation="info">
+                <input part="l"/>
+	</receive>
+
+	<if>
+
+		<sequence>
+			<invoke operation="watch">
+			</invoke>
+			<receive operation="data">
+				<input part="sss"/>
+			</receive>
+		</sequence>
+		<sequence>
+			<invoke operation="store">
+			</invoke>
+			<receive operation="data">
+				<input part="sss"/>
+			</receive>
+		</sequence>
+
+	</if>
+
+	<exit/>
+
+<!-- </sequence> -->
+
+</process>

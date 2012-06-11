@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="MedClient-Semantic_PICK"
+    targetNamespace="http://lcc.uma.es/dinapter/examples"
+    abstractProcessProfile="http://docs.oasis-open.org/wsbpel/2.0/process/abstract" 
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+
+	<invoke operation="user" inputVariable="username"/>
+	<invoke operation="password" inputVariable="pwd"/>
+	<if><condition opaque="yes"/>
+		<sequence>
+			<invoke operation="doctor" inputVariable="date"/>
+			<receive operation="doctor" variable="ticket"/>
+		</sequence>
+		<else><sequence>
+			<invoke operation="pediatrist" inputVariable="date"/>
+			<receive operation="pediatrist" variable="ticket"/>
+	</sequence></else></if>
+</process>

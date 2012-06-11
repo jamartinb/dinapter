@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-2">
+<!-- It should be here some other declarations and definitions -->
+
+<!-- <sequence> Implicit -->
+
+	<invoke operation="price">
+	</invoke>
+	<invoke operation="type">
+	</invoke>
+	<invoke operation="identifier">
+		<input part="id"/>
+	</invoke>
+	<receive operation="reply">
+                <input part="r"/>
+	</receive>
+
+	<invoke operation="buy">
+	</invoke>
+
+	<receive operation="confirm">
+	</receive>
+
+	<exit/>
+
+<!-- </sequence> -->
+
+</process>

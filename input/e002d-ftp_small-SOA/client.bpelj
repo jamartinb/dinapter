@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="FTPClient-c">
+<!-- It should be here some other declarations and definitions -->
+
+<!-- <sequence> Implicit -->
+	<invoke operation="user">
+		<input part="username"/>
+	</invoke>
+	<invoke operation="password">
+		<input part="pass"/>
+	</invoke>
+	<invoke operation="download">
+		<input part="filename"/>
+	</invoke>
+	<receive operation="download">
+		<input part="data"/>
+	</receive>
+	<exit/>
+<!-- </sequence> -->
+
+</process>

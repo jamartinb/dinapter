@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-PICK_PICK">
+	<!-- It should be here some other declarations and definitions -->
+	<receive operation="user">
+		<input part="username"/>
+	</receive>
+	<receive operation="pass">
+		<input part="password"/>
+	</receive>
+	<pick>
+		<sequence>
+			<receive operation="getFile">
+				<input part="filename"/>
+			</receive>
+			<invoke operation="resultFile">
+				<input part="data"/>
+			</invoke>
+			<invoke operation="end"/>
+			<exit/>
+		</sequence>
+		<sequence>
+			<receive operation="ls"/>
+			<invoke operation="files">
+				<input part="filelist"/>
+			</invoke>
+			<exit/>
+		</sequence>
+	</pick>
+</process>

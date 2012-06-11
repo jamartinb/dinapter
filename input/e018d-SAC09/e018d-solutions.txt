@@ -1,0 +1,238 @@
+####################### Tue Jul 22 10:29:26 CEST 2008 ########################
+Loading directory: input/e018d-SAC09/
+Loaded component: client-SAC09d
+Loaded component: supplier_loop-SAC09d
+There are:
+	          Solutions = 28
+	              Rules = 69
+	Specificator Graphs = 323/61/30 = Max. active Graphs
+	   Graphs discarded = 51
+	Specification Nodes = 450/254 = Expanded Nodes
+	       Memory usage = 42.727 KB
+	Results Quality = 62,601%
+ *** 28 out of 28 solutions found *** 
+----------------- Specification #0 ----------------------
+SRm 32630374/746116243
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]confirmation?( ) ◊ done!( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]; ◊ invoice!(number)
+----------------- Specification #1 ----------------------
+SRm 13167574/746116243
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]; ◊ done!( )
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=3]confirmation?( ) ◊ invoice!(number)
+----------------- Specification #2 ----------------------
+SRm 5018853/-1547794561
+[f=20;ac=18;h=2;c=1]
+*[h=1]confirmation?( ) ◊ done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]; ◊ invoice!(number)
+----------------- Specification #3 ----------------------
+SRm 28442439/-715166649
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number); done!( )
+----------------- Specification #4 ----------------------
+SRm 7576227/1807088859
+[f=20;ac=18;h=2;c=1]
+*[h=1]confirmation?( ) ◊ done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]buy!(item) ◊ purchase?(item); invoice!(number)
+----------------- Specification #5 ----------------------
+SRm 16987216/-726977611
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]confirmation?( ) ◊ done!( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]buy!(item) ◊ purchase?(item); invoice!(number)
+----------------- Specification #6 ----------------------
+SRm 27717291/1474172606
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]confirmation?( ) ◊ invoice!(number); done!( )
+----------------- Specification #7 ----------------------
+SRm 28277847/162545239
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]; ◊ done!( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=3]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number)
+----------------- Specification #8 ----------------------
+SRm 120402/-1667872394
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]; ◊ done!( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=3]confirmation?( ) ◊ invoice!(number)
+----------------- Specification #9 ----------------------
+SRm 7224872/-606899778
+[f=20;ac=18;h=2;c=1]
+*[h=1]confirmation?( ) ◊ done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]buy!(item) ◊ purchase?(item); invoice!(number)
+----------------- Specification #10 ----------------------
+SRm 8239415/-939816031
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]confirmation?( ) ◊ invoice!(number); done!( )
+----------------- Specification #11 ----------------------
+SRm 3163720/-1718433420
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]; ◊ done!( )
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=3]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number)
+----------------- Specification #12 ----------------------
+SRm 27324099/1687011026
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]confirmation?( ) ◊ done!( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]buy!(item) ◊ purchase?(item); invoice!(number)
+----------------- Specification #13 ----------------------
+SRm 20914474/1165812010
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number); done!( )
+----------------- Specification #14 ----------------------
+SRm 2096075/866194076
+[f=20;ac=18;h=2;c=1]
+*[h=1]confirmation?( ) ◊ done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=4]; ◊ invoice!(number)
+----------------- Specification #15 ----------------------
+SRm 1784167/-1667872394
+[f=20;ac=18;h=2;c=1]
+*[h=1]; ◊ abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]confirmation?( ) ◊ done!( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=4]; ◊ invoice!(number)
+----------------- Specification #16 ----------------------
+SRm 8543475/-1598355587
+[f=20;ac=17;h=3;c=1]
+*[h=2]; ◊ done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=3]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number)
+----------------- Specification #17 ----------------------
+SRm 25316652/866194076
+[f=20;ac=17;h=3;c=1]
+*[h=2]; ◊ done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=3]confirmation?( ) ◊ invoice!(number)
+----------------- Specification #18 ----------------------
+SRm 22746539/-1547794561
+[f=20;ac=17;h=3;c=1]
+*[h=2]; ◊ done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=3]confirmation?( ) ◊ invoice!(number)
+----------------- Specification #19 ----------------------
+SRm 26153596/282623072
+[f=20;ac=17;h=3;c=1]
+*[h=2]; ◊ done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=3]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number)
+----------------- Specification #20 ----------------------
+SRm 2707298/-1792617594
+[f=20;ac=14;h=6;c=1]
+*[h=1]confirmation?( ) ◊ ;
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+[h=3]buy!(item) ◊ abort?( )
+----------------- Specification #21 ----------------------
+SRm 30021687/-433562877
+[f=20;ac=14;h=6;c=1]
+*[h=5]confirmation?( ) ◊ invoice!(number); done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+----------------- Specification #22 ----------------------
+SRm 18437278/-800335417
+[f=20;ac=14;h=6;c=1]
+*[h=5]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number); done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+----------------- Specification #23 ----------------------
+SRm 1389308/621371043
+[f=20;ac=14;h=6;c=1]
+*[h=1]confirmation?( ) ◊ ;
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+[h=3]buy!(item) ◊ abort?( )
+----------------- Specification #24 ----------------------
+SRm 13558815/1447415782
+[f=20;ac=14;h=6;c=1]
+*[h=5]confirmation?( ) ◊ invoice!(number); done!( ); abort?( )
+[h=0]buy!(item) ◊ purchase?(item)
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+----------------- Specification #25 ----------------------
+SRm 16796186/1613653220
+[f=20;ac=14;h=6;c=1]
+*[h=5]buy!(item); confirmation?( ) ◊ purchase?(item); invoice!(number); done!( ); abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+----------------- Specification #26 ----------------------
+SRm 39600/-940909041
+[f=20;ac=11;h=9;c=1]
+*[h=4]buy!(item); confirmation?( ) ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=1]getItem!(item, type); getItem?(price) ◊ setCategory?(type); itemRequest?(item); itemRequest!(price)
+----------------- Specification #27 ----------------------
+SRm 3315058/1473079596
+[f=20;ac=11;h=9;c=1]
+*[h=4]buy!(item); confirmation?( ) ◊ abort?( )
+[h=0]cancel!( ) ◊ abort?( )
+[h=0]getItem?(price) ◊ itemRequest!(price)
+[h=1]getItem!(item, type) ◊ setCategory?(type); itemRequest?(item)
+---------------------------------------------------------

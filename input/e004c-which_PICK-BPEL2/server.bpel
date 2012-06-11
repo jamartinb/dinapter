@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-which_pick-BPEL2"
+    targetNamespace="http://lcc.uma.es/dinapter/examples"
+    abstractProcessProfile="http://docs.oasis-open.org/wsbpel/2.0/process/abstract" 
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+    
+	<receive operation="user" variable="username"/>
+	<receive operation="pass" variable="password"/>
+	<pick>
+		<onMessage operation="ftpServer">
+			<pick>
+			    <onMessage operation="getFile" variable="filename">
+			        <sequence>
+    			    	<invoke operation="resultFile" inputVariable="data"/>
+    					<invoke operation="end"/>
+    				 </sequence>
+				</onMessage>
+				<onMessage operation="ls">
+					<invoke operation="files" inputVariable="filelist"/>
+				</onMessage>
+			</pick>
+		</onMessage>
+		<onMessage operation="telnet">
+			<pick>
+			    <onMessage operation="command" variable="line">
+					<invoke operation="result" inputVariable="echo"/>
+				</onMessage>
+				<onMessage operation="quit"/>
+			</pick>
+		</onMessage>
+	</pick>
+</process>

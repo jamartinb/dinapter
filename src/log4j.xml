@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!--
+  This file is part of Dinapter.
+
+  Dinapter is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+
+  Dinapter is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  (C) Copyright 2007 José Antonio Martín Baena
+  
+  José Antonio Martín Baena <jose.antonio.martin.baena@gmail.com>
+  Ernesto Pimentel Sánchez <ernesto@lcc.uma.es>
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%-7r [%d{ABSOLUTE}] %-5p %c{1} - %m%n"/>
+	</layout>
+  </appender>
+  <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%-7r [%d{ABSOLUTE}] %-5p %c{1} - %m%n"/>
+	</layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+        <param name="LevelMin" value="INFO"/>
+	    <param name="LevelMax" value="FATAL"/>
+    </filter> 
+  </appender>
+  <appender name="FullAppender" class="org.apache.log4j.FileAppender">
+	  <param name="file" value="log/FullLog.txt"/>
+	  <param name="append" value="false"/>
+	  <layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%-7r [%d{ABSOLUTE}] %-5p %c{1} - %m%n"/>
+	  </layout>
+  </appender>
+  <appender name="TraceAppender" class="org.apache.log4j.FileAppender">
+	  <param name="file" value="log/TraceLog.txt"/>
+	  <param name="append" value="false"/>
+	  <layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%-7r [%d{ABSOLUTE}] %m%n"/>
+	  </layout>
+	  <filter class="org.apache.log4j.varia.LevelMatchFilter">
+		  <param name="LevelToMatch" value="TRACE"/>
+      </filter>
+      <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  <appender name="ExplorationAppender" class="org.apache.log4j.FileAppender">
+	  <param name="file" value="log/ExplorationLog.txt"/>
+	  <param name="append" value="false"/>
+	  <layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%-7r [%d{ABSOLUTE}] %m%n"/>
+	  </layout>
+	  <filter class="org.apache.log4j.varia.LevelMatchFilter">
+		  <param name="LevelToMatch" value="TRACE"/>
+ 	  </filter>
+ 	  <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  <appender name="MergesAppender" class="org.apache.log4j.FileAppender">
+  	<param name="file" value="log/MergesLog.txt"/>
+  	<param name="append" value="false"/>
+  	<layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%m%n"/>
+	</layout>
+  </appender>
+  <appender name="RulesDebug" class="org.apache.log4j.FileAppender">
+	<param name="file" value="log/RulesDebug.txt"/>
+	<param name="append" value="false"/>
+  	<layout class="org.apache.log4j.PatternLayout">
+		  <param name="ConversionPattern"
+			 value="%m%n"/>
+	</layout>
+	<filter class="org.apache.log4j.varia.LevelMatchFilter">
+		<param name="LevelToMatch" value="DEBUG"/>
+ 	</filter>
+ 	<filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  <appender name="SolutionsLog" class="org.apache.log4j.FileAppender">
+    <param name="file" value="log/Solutions.txt"/>
+    <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern"
+             value="%m%n"/>
+    </layout>
+  </appender>
+  <appender name="StatisticsLog" class="org.apache.log4j.FileAppender">
+    <param name="file" value="log/Statistics.txt"/>
+    <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern"
+             value="%m%n"/>
+    </layout>
+  </appender>
+  <!-- ========================= LOGGERS =============================== -->
+  <logger name="dinapter.specificator.ReteLog">
+	  <appender-ref ref="TraceAppender"/>
+	  <appender-ref ref="RulesDebug"/>
+  </logger>
+  <logger name="dinapter.Dinapter.statistics">
+    <appender-ref ref="StatisticsLog"/>
+  </logger>
+  <logger name="dinapter.Dinapter.solutions">
+    <appender-ref ref="SolutionsLog"/>
+  </logger>
+  <logger name="dinapter.specificator.JSearchSpecificator">
+  	  <appender-ref ref="ExplorationAppender"/>
+  </logger>
+  <!--
+  <logger name="dinapter.specificator.userfunction.MergeGraphsUserfunction">
+  	  <appender-ref ref="MergesAppender"/>
+  </logger>
+  -->
+  <!-- ============================ ROOT =============================== -->
+  <root>
+	  <level value="trace"/>
+	  <appender-ref ref="ConsoleAppender"/>
+	  <appender-ref ref="FullAppender"/>
+  </root>
+</log4j:configuration>

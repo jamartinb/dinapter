@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="vod-3">
+	<!-- It should be here some other declarations and definitions -->
+
+	<pick>
+
+	<receive operation="search">
+	</receive>
+
+	<receive operation="preview">
+	</receive>
+
+	</pick>
+
+
+	<invoke operation="list">
+                <input part="l"/>
+	</invoke>
+
+	<pick>
+
+		<sequence>
+			<receive operation="record">
+			</receive>
+		</sequence>
+		<sequence>
+			<receive operation="play">
+			</receive>
+		</sequence>
+
+
+	</pick>
+
+	<invoke operation="stream">
+                <input part="sss"/>
+	</invoke>
+
+	<exit/>
+
+</process>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="supplier-1b-WCAT08a">
+	<!-- It should be here some other declarations and definitions -->
+
+	<receive operation="itemRequest">
+		<input part="item"/>
+	</receive>
+
+	<invoke operation="itemRequest">
+                <input part="price"/>
+	</invoke>
+
+	<pick>
+
+		<sequence>
+			<receive operation="setQuantity">
+				<input part="units"/>
+			</receive>
+			<receive operation="buy">
+                		<input part="item"/>
+			</receive>
+		</sequence>
+		<sequence>
+			<receive operation="abort">
+			</receive>
+		</sequence>
+
+
+	</pick>
+
+	<exit/>
+
+
+</process>

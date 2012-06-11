@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<interface height="390" width="237" ports="right">
+	<signatures>
+		<signature name="login">
+			<inputs>
+				<dataItem name="tstr"/>
+				<dataItem name="tstr"/>
+			</inputs>
+		</signature>
+		<signature name="reqDoc">
+			<inputs>
+				<dataItem name="tdate"/>
+			</inputs>
+			<outputs>
+				<dataItem name="tid"/>
+			</outputs>
+		</signature>
+		<signature name="availability">
+			<inputs>
+				<dataItem name="tid"/>
+			</inputs>
+			<outputs>
+				<dataItem name="tdate"/>
+			</outputs>
+		</signature>
+		<signature name="reqSpec">
+			<inputs>
+				<dataItem name="tdate"/>
+			</inputs>
+			<outputs>
+				<dataItem name="tid"/>
+			</outputs>
+		</signature>
+	</signatures>
+	<protocol>
+		<labels>
+			<label id="login_REC" name="login" type="IN">
+				<dataItem name="usr"/>
+				<dataItem name="pwd"/>
+			</label>
+			<label id="availability_REC" name="availability" type="IN">
+				<dataItem name="tkt"/>
+			</label>
+			<label id="availability_EM" name="availability" type="OUT">
+				<dataItem name="d"/>
+			</label>
+			<label id="reqSpec_REC" name="reqSpec" type="IN">
+				<dataItem name="d"/>
+			</label>
+			<label id="reqDoc_REC" name="reqDoc" type="IN">
+				<dataItem name="d"/>
+			</label>
+			<label id="reqSpec_EM" name="reqSpec" type="OUT">
+				<dataItem name="tkt"/>
+			</label>
+			<label id="reqDoc_EM" name="reqDoc" type="OUT">
+				<dataItem name="tkt"/>
+			</label>
+		</labels>
+		<states>
+			<state id="1" x="20" y="167"/>
+			<state id="0" initial="True" x="112" y="169"/>
+			<state id="3" x="20" y="270"/>
+			<state id="2" x="63" y="68"/>
+			<state id="5" x="113" y="272"/>
+			<state id="4" x="65" y="360"/>
+			<state id="6" final="True"/>
+		</states>
+		<transitions>
+			<transition label="login_REC" source="0" target="1" x="40" y="168"/>
+			<transition label="reqDoc_REC" source="1" target="2" x="19" y="91"/>
+			<transition label="reqDoc_EM" source="2" target="6" x="111" y="86"/>
+			<transition label="reqSpec_REC" source="1" target="3" x="19" y="222"/>
+			<transition label="availability_EM" source="3" target="4" x="13" y="335"/>
+			<transition label="availability_REC" source="4" target="5" x="117" y="357"/>
+			<transition label="reqSpec_EM" source="5" target="6" x="113" y="223"/>
+		</transitions>
+	</protocol>
+</interface>

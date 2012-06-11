@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<interface height="371" width="398">
+	<signatures>
+		<signature name="purchase">
+			<inputs>
+				<dataItem name="string"/>
+			</inputs>
+		</signature>
+		<signature name="setCategory">
+			<inputs>
+				<dataItem name="string"/>
+				<dataItem name="string"/>
+			</inputs>
+		</signature>
+		<signature name="abort"/>
+		<signature name="done"/>
+		<signature name="invoice">
+			<outputs>
+				<dataItem name="int"/>
+			</outputs>
+		</signature>
+		<signature name="itemRequest">
+			<inputs>
+				<dataItem name="string"/>
+			</inputs>
+			<outputs>
+				<dataItem name="int"/>
+			</outputs>
+		</signature>
+	</signatures>
+	<protocol>
+		<labels>
+			<label id="itemRequest_REC" name="itemRequest" type="IN">
+				<dataItem name="item"/>
+			</label>
+			<label id="purchase_REC" name="purchase" type="IN">
+				<dataItem name="item"/>
+			</label>
+			<label id="done_EM" name="done" type="OUT"/>
+			<label id="abort_REC" name="abort" type="IN"/>
+			<label id="invoice_EM" name="invoice" type="OUT">
+				<dataItem name="number"/>
+			</label>
+			<label id="itemRequest_EM" name="itemRequest" type="OUT">
+				<dataItem name="price"/>
+			</label>
+			<label id="setCategory_REC" name="setCategory" type="IN">
+				<dataItem name="type"/>
+			</label>
+		</labels>
+		<states>
+			<state id="1" x="199" y="116"/>
+			<state id="0" initial="True" x="198" y="63"/>
+			<state id="3" x="315" y="259"/>
+			<state id="2" x="312" y="188"/>
+			<state final="True" id="5" x="198" y="261"/>
+			<state id="4" x="201" y="347"/>
+			<state id="7" x="93" y="184"/>
+			<state id="6" x="91" y="256"/>
+		</states>
+		<transitions>
+			<transition label="setCategory_REC" source="0" target="1" x="199" y="76"/>
+			<transition label="itemRequest_REC" source="1" target="2" x="278" y="123"/>
+			<transition label="itemRequest_EM" source="2" target="3" x="313" y="218"/>
+			<transition label="abort_REC" source="3" target="5" x="232" y="261"/>
+			<transition label="purchase_REC" source="3" target="4" x="309" y="343"/>
+			<transition label="invoice_EM" source="4" target="6" x="100" y="352"/>
+			<transition label="done_EM" source="6" target="7" x="90" y="239"/>
+			<transition label="abort_REC" source="7" target="5" x="154" y="227"/>
+			<transition label="setCategory_REC" source="7" target="1" x="107" y="134"/>
+		</transitions>
+	</protocol>
+</interface>

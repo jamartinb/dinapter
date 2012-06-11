@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="FTPClient-Full_rejection">
+<!-- It should be here some other declarations and definitions -->
+	<links>
+		<link name="DtoS"/>
+	</links>
+
+	<invoke operation="login">
+		<input part="username"/>
+		<input part="password"/>
+	</invoke>
+	<pick>
+		<sequence>
+			<receive operation="accepted"/>
+			<if>
+				<target linkName="DtoS"/>
+				<sequence>
+					<invoke operation="download">
+						<input part="filename"/>
+					</invoke>
+					<receive operation="data">
+						<source linkName="DtoS"/>
+						<input part="data"/>
+					</receive>
+				</sequence>
+				<sequence>
+					<invoke operation="quit"/>
+					<exit/>
+				</sequence>
+			</if>
+		</sequence>
+		<sequence>
+			<receive operation="refused"/>
+			<exit/>
+		</sequence>
+	</pick>
+</process>

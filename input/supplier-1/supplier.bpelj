@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="supplier-1">
+	<!-- It should be here some other declarations and definitions -->
+
+	<receive operation="request">
+		<input part="item"/>
+	</receive>
+
+	<invoke operation="reply">
+                <input part="reply"/>
+	</invoke>
+
+	<pick>
+
+		<sequence>
+			<receive operation="buy">
+				<input part="item"/>
+			</receive>
+			<invoke operation="ack">
+                		<input part="valid"/>
+			</invoke>
+		</sequence>
+		<sequence>
+			<receive operation="abort">
+			</receive>
+		</sequence>
+
+
+	</pick>
+
+	<exit/>
+
+
+</process>

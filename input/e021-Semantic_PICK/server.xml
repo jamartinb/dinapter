@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<interface height="390" width="237" ports="right">
+	<signatures>
+		<signature name="login">
+			<inputs>
+				<dataItem name="tstr"/>
+				<dataItem name="tstr"/>
+			</inputs>
+		</signature>
+		<signature name="physician">
+			<inputs>
+				<dataItem name="tdate"/>
+			</inputs>
+		</signature>
+		<signature name="physicianReply">
+			<outputs>
+				<dataItem name="tid"/>
+			</outputs>
+		</signature>
+		<signature name="specialist">
+			<inputs>
+				<dataItem name="tdate"/>
+			</inputs>
+		</signature>
+		<signature name="specialistReply">
+			<outputs>
+				<dataItem name="tid"/>
+			</outputs>
+		</signature>
+	</signatures>
+	<protocol>
+		<labels>
+			<label id="login_REC" name="login" type="IN">
+				<dataItem name="usr"/>
+				<dataItem name="pwd"/>
+			</label>
+			<label id="specialist_REC" name="specialist" type="IN">
+				<dataItem name="d"/>
+			</label>
+			<label id="physician_REC" name="physician" type="IN">
+				<dataItem name="d"/>
+			</label>
+			<label id="specialistReply_EM" name="specialistReply" type="OUT">
+				<dataItem name="tkt"/>
+			</label>
+			<label id="physicianReply_EM" name="physicianReply" type="OUT">
+				<dataItem name="tkt"/>
+			</label>
+		</labels>
+		<states>
+			<state id="1" x="20" y="167"/>
+			<state id="0" initial="True" final="True" x="112" y="169"/>
+			<state id="2" x="63" y="68"/>
+			<state id="5" x="113" y="272"/>
+		</states>
+		<transitions>
+			<transition label="login_REC" source="0" target="1" x="40" y="168"/>
+			<transition label="physician_REC" source="1" target="2" x="19" y="91"/>
+			<transition label="physicianReply_EM" source="2" target="0" x="111" y="86"/>
+			<transition label="specialist_REC" source="1" target="5" x="19" y="222"/>
+			<transition label="specialistReply_EM" source="5" target="0" x="113" y="223"/>
+		</transitions>
+	</protocol>
+</interface>

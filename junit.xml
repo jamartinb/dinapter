@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse.ant.import?>
+<project basedir="." default="junit" name="Dinapter/junit">
+	<import file="build.xml"/>
+	<target depends="build" name="junit">
+		<delete dir="${junit.output.dir}"/>
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <classpath refid="Dinapter.classpath"/>
+            <batchtest fork="yes" todir="${junit.output.dir}">
+			   <fileset dir="src">
+			     <include name="dinapter/**/*Test.java"/>
+			     <exclude name="**/AllTests.java"/>
+			   </fileset>
+  			</batchtest>
+        </junit>
+        <antcall target="junitreport"/>
+	<exec dir="${junit.output.dir}" executable="firefox">
+		<arg line="index.html"/>
+	</exec>
+    </target>
+    <target name="profile" depends="build">
+	<nbprofiledirect>
+            <classpath refid="Dinapter.classpath"/>
+    	</nbprofiledirect>
+        <java classname="dinapter.Dinapter" failonerror="true" fork="yes">
+            <arg line="input/client.bpelj input/server-small.bpelj"/>
+            <classpath refid="Dinapter.classpath"/>
+            <jvmarg value="${profiler.info.jvmargs.agent}"/>
+        </java>
+    </target>
+</project>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="server-IF_IF">
+<!-- It should be here some other declarations and definitions -->
+	<receive operation="hola"/>
+	<if>
+		<sequence>
+			<invoke operation="quieroQueso"/>
+			<receive operation="tipoQueso">
+				<input part="curado"/>
+			</receive>
+		</sequence>
+		<sequence>
+			<invoke operation="quieroCarne"/>
+			<receive operation="tipoCarne">
+				<input part="serrano"/>
+			</receive>
+		</sequence>
+	</if>
+	<exit/>
+</process>

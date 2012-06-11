@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="MedClient-WN"
+    targetNamespace="http://lcc.uma.es/dinapter/examples"
+    abstractProcessProfile="http://docs.oasis-open.org/wsbpel/2.0/process/abstract" 
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+
+	<invoke operation="user" inputVariable="username"/>
+	<invoke operation="password" inputVariable="pwd"/>
+	<if><condition opaque="yes"/>
+		<sequence>
+			<invoke operation="doc" inputVariable="date"/>
+			<receive operation="doc" variable="ticket"/>
+		</sequence>
+		<else><sequence>
+			<invoke operation="spec" inputVariable="date"/>
+			<receive operation="spec" variable="ticket"/>
+	</sequence></else></if>
+</process>

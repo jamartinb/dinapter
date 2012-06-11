@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<process name="client-IF_IF">
+	<!-- It should be here some other declarations and definitions -->
+	<invoke operation="hola"/>
+	<if>
+		<invoke operation="queso">
+			<input part="curado"/>
+		</invoke>
+		<invoke operation="jamón">
+			<input part="serrano"/>
+		</invoke>
+	</if>
+	<exit/>
+</process>
